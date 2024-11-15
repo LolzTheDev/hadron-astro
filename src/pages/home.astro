@@ -1,0 +1,40 @@
+---
+import Link from "../components/Link.astro";
+import Layout from "../layouts/Layout.astro";
+import apps from "../components/apps.json";
+
+const applets: {
+  img: string
+  dest: string
+  name: string
+}[] = apps
+---
+
+<Layout title="">
+  <div class="flex h-screen items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold mb-2">hadron</h1>
+      <p>simple and beautiful proxy</p>
+
+      <hr class="border border-zinc-600 my-4" />
+
+      <div>
+        <p class="font-bold text-2xl mb-4">apps</p>
+
+        <div class="grid grid-cols-4 gap-4">
+          {applets.map((app) => {
+            return <Link name={app.name} img={app.img} dest={app.dest} />
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    async function goto(url) {
+      location.href = await window.chemical.encode(url, {
+        autoHttps: true
+      })
+    }
+  </script>
+</Layout>

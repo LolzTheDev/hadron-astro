@@ -2,6 +2,11 @@
 interface Props {
 	title: string;
 }
+declare global {
+  interface Window {
+    chemical: any;
+  }
+}
 
 const { title } = Astro.props;
 ---
@@ -15,7 +20,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<script is:raw src="/chemical.js"></script>
+		<script is:inline src="/chemical.js"></script>
 		<title>{title}</title>
 	</head>
 
@@ -24,8 +29,10 @@ const { title } = Astro.props;
 	</body>
 
 	<script>
-  	window.addEventListener("chemicalLoaded", function(e) {
-      alert("Chemical is loaded: ", chemical.loaded)
+  	window.addEventListener("chemicalLoaded", async (e) => {
+     await window.chemical.setWisp(`${location.protocol.replace('http', 'ws')}//${location.host}/f/`)
+      await window.chemical.setTransport("epoxy")
     })
+
 	</script>
 </html>

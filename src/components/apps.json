@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Invidious",
+    "img": "Invidious.svg",
+    "dest": "invidious.catspeed.cc"
+  },
+  {
+    "name": "TikTok",
+    "img": "TikTok.png",
+    "dest": "tiktok.com"
+  },
+  {
+    "name": "Instagram",
+    "img": "Insta.svg",
+    "dest": "instagram.com"
+  },
+  {
+    "name": "ChatGPT",
+    "img": "ChatGPT.png",
+    "dest": "chatgpt.com"
+  }
+]
