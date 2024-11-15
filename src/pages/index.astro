@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Icon from "../components/Icon.astro"
+import { Search } from "lucide"
+---
+
+<Layout title="hardon">
+  <div class="h-screen w-screen flex items-center justify-center">
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl font-bold">hardon</h1>
+      <div class="flex items-center gap-2">
+        <input type="text" class="p-2 rounded-md bg-zinc-800 border border-zinc-600" placeholder="search or enter a url" />
+        <button id="search" class="p-2 rounded-md bg-zinc-800 border border-zinc-600">
+          <Icon icon={Search} />
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const search = document.querySelector("#search")
+  search?.addEventListener("click", async () => {
+    location.href = await chemical.encode("https://google.com", {
+      service: "uv",
+      autoHttps: true
+    })
+  })
+</script>
